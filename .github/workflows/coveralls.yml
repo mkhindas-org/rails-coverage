@@ -1,27 +1,27 @@
-on: ["push", "pull_request"]
+# on: ["push", "pull_request"]
 
-name: Test Coveralls
+# name: Test Coveralls
 
-jobs:
-  coveralls-build:
-    name: coveralls-build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+# jobs:
+#   coveralls-build:
+#     name: coveralls-build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
 
-      - name: Install Ruby (2.6)
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6.6
-          bundler-cache: true
+#       - name: Install Ruby (2.6)
+#         uses: ruby/setup-ruby@v1
+#         with:
+#           ruby-version: 2.6.6
+#           bundler-cache: true
 
-      - name: Build and test with RSpec
-        run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3
-          bundle exec rspec
+#       - name: Build and test with RSpec
+#         run: |
+#           gem install bundler
+#           bundle install --jobs 4 --retry 3
+#           bundle exec rspec
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Coveralls
+#         uses: coverallsapp/github-action@master
+#         with:
+#           github-token: ${{ secrets.GITHUB_TOKEN }}

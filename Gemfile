@@ -28,7 +28,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'coveralls', require: false
+  gem 'simplecov-lcov', '~> 0.8.0'
+  gem 'coveralls_reborn', '~> 0.22.0', require: false
   gem 'rspec-rails'
 end
 
