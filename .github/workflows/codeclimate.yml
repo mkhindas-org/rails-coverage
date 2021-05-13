@@ -1,9 +1,9 @@
-name: build
+name: code-climate-reporter
 
 on: [push, pull_request]
 
 jobs:
-  build:
+  test-and-report:
     runs-on: ubuntu-latest
 
     steps:

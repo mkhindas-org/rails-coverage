@@ -19,8 +19,10 @@ jobs:
           bundle install --jobs 4 --retry 3
           COVERAGE=true bundle exec rspec
       - name: Upload coverage results
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v2
         if: always()
         with:
           name: coverage-report
-          path: coverage
+          path: |
+            coverage/assets
+            coverage/index.html
