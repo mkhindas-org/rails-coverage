@@ -5,9 +5,7 @@ SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
 
 
 SimpleCov::Formatter::LcovFormatter.config do |c|
-  # c.output_directory = 'coverage/lcov' # default: "coverage/lcov"
-  # c.lcov_file_name = 'lcov.info' # default: "YOUR_PROJECT_NAME.lcov"
-  c.single_report_path = 'coverage/lcov/lcov.info'
+  c.single_report_path = 'coverage/lcov.info'
 end
 
 
