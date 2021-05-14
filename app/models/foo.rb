@@ -3,7 +3,7 @@ class Foo < ApplicationRecord
     puts 'is up?'
   end
 
-  def what
+  def what_two
     puts 'is happening?'
   end
 end
