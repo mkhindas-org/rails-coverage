@@ -28,8 +28,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'simplecov-lcov', '~> 0.8.0'
-  gem 'coveralls_reborn', '~> 0.22.0', require: false
+  # gem 'simplecov-lcov', '~> 0.8.0'
+  # gem 'coveralls_reborn', '~> 0.22.0', require: false
+  gem 'codecov', require: false
   gem 'rspec-rails'
 end
 
@@ -40,7 +41,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-gem 'simplecov', require: false, group: :test
+# gem 'simplecov', require: false, group: :test
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
