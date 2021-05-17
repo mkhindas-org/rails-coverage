@@ -1,18 +1,18 @@
-# require 'simplecov'
-# require 'simplecov-lcov'
+require 'simplecov'
 
-# SimpleCov::Formatter::LcovFormatter.config do |c|
-#   c.report_with_single_file = true
-#   c.single_report_path = 'coverage/lcov.info'
-# end
+SimpleCov::Formatter::LcovFormatter.config do |c|
+  c.report_with_single_file = true
+  c.single_report_path = 'coverage/lcov.info'
+end
 
 # require 'coveralls'
 require 'codecov'
+require 'simplecov-lcov'
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
                                                                  SimpleCov::Formatter::HTMLFormatter,
                                                                  #  Coveralls::SimpleCov::Formatter,
-                                                                 SimpleCov::Formatter::Codecov
-                                                                 #  SimpleCov::Formatter::LcovFormatter
+                                                                 SimpleCov::Formatter::Codecov,
+                                                                 SimpleCov::Formatter::LcovFormatter
                                                                ])
 
 SimpleCov.start 'rails'
