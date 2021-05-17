@@ -1,13 +1,13 @@
+require 'codecov'
 require 'simplecov'
+require 'simplecov-lcov'
+# require 'coveralls'
 
 SimpleCov::Formatter::LcovFormatter.config do |c|
   c.report_with_single_file = true
   c.single_report_path = 'coverage/lcov.info'
 end
 
-# require 'coveralls'
-require 'codecov'
-require 'simplecov-lcov'
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
                                                                  SimpleCov::Formatter::HTMLFormatter,
                                                                  #  Coveralls::SimpleCov::Formatter,
