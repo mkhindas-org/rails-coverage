@@ -1,7 +1,7 @@
 require 'codecov'
 require 'simplecov'
 require 'simplecov-lcov'
-# require 'coveralls'
+require 'coveralls'
 
 SimpleCov::Formatter::LcovFormatter.config do |c|
   c.report_with_single_file = true
@@ -10,7 +10,7 @@ end
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
                                                                  SimpleCov::Formatter::HTMLFormatter,
-                                                                 #  Coveralls::SimpleCov::Formatter,
+                                                                 Coveralls::SimpleCov::Formatter,
                                                                  SimpleCov::Formatter::Codecov,
                                                                  SimpleCov::Formatter::LcovFormatter
                                                                ])

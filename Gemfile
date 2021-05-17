@@ -29,7 +29,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'codecov', require: false
-  # gem 'coveralls_reborn', '~> 0.22.0', require: false
+  gem 'coveralls_reborn', '~> 0.22.0', require: false
   gem 'rewind-ruby-style', require: false, source: 'https://rubygems.org'
   gem 'simplecov-lcov', '~> 0.8.0'
 
