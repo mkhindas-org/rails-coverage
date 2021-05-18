@@ -19,7 +19,7 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rspec
 
-      - uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          directory: ./coverage/
+      uses: romeovs/lcov-reporter-action@latest
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        lcov-file: ./coverage/lcov.info
