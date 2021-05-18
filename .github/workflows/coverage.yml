@@ -40,4 +40,4 @@ jobs:
         with:
           path: coverage/coverage.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 30
+          minimum_coverage: 60
