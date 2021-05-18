@@ -32,7 +32,9 @@ group :development, :test do
   # gem 'coveralls_reborn', '~> 0.22.0', require: false
   gem 'rewind-ruby-style', require: false, source: 'https://rubygems.org'
   gem 'simplecov', '~> 0.21'
-  gem 'simplecov-lcov', '~> 0.8'
+  # gem 'simplecov-lcov', '~> 0.8'
+  # gem 'simplecov-lcov', '~> 0.8'
+  gem 'simplecov-cobertura'
 
   gem 'rspec-rails'
 end
