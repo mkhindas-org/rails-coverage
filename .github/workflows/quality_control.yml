@@ -60,12 +60,12 @@ jobs:
           min_coverage: 90
           token: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Very good coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
-        with:
-          path: coverage/lcov.info
-          min_coverage: 90
-          # exclude: "**/*_observer.dart **/change.dart"
+      # - name: Very good coverage
+      #   uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
+      #   with:
+      #     path: coverage/lcov.info
+      #     min_coverage: 90
+      #     # exclude: "**/*_observer.dart **/change.dart"
       - name: Report code coverage
         uses: zgosalvez/github-actions-report-lcov@v1
         with:
