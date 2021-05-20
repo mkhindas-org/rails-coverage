@@ -1,9 +1,9 @@
-name: Coverage comments
+name: Quality Control
 
 on: [pull_request]
 
 jobs:
-  test-and-report:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,16 +28,21 @@ jobs:
       #   uses: aki77/simplecov-report-action@v1
       #   with:
       #     token: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Upload coverage results
-      #   uses: actions/upload-artifact@v2
-      #   if: always()
-      #   with:
-      #     name: coverage-report
-      #     path: coverage
 
+
+  report:
+    needs: test
+    runs-on: ubuntu-latest
       - name: Cobertura comment
         uses: 5monkeys/cobertura-action@master
         with:
           path: coverage/coverage.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 60
+          minimum_coverage: 90
+
+      - name: Upload coverage results
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage
