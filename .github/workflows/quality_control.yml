@@ -50,6 +50,7 @@ jobs:
         with:
           path: coverage/coverage.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_coverage: 90
 
       - name: Coverage check
         uses: devmasx/coverage-check-action@v1.2.0
