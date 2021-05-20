@@ -17,6 +17,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
                                                                  SimpleCov::Formatter::CoberturaFormatter
                                                                ])
 
-SimpleCov.minimum_coverage 80
-SimpleCov.maximum_coverage_drop 25
+# SimpleCov.minimum_coverage 80
+# SimpleCov.maximum_coverage_drop 25
 SimpleCov.start 'rails'
