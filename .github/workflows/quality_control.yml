@@ -19,7 +19,13 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rspec
 
-      # - name: Code Coverage Report
+      - name: Upload coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-results
+          path: coverage
+
+          # - name: Code Coverage Report
       #   uses: romeovs/lcov-reporter-action@v0.2.21
       #   with:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -33,16 +39,14 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
+      - name: Download coverage results
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage-results
+
       - name: Cobertura comment
         uses: 5monkeys/cobertura-action@master
         with:
           path: coverage/coverage.xml
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           minimum_coverage: 90
-
-      - name: Upload coverage results
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: coverage-report
-          path: coverage
