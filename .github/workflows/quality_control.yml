@@ -29,10 +29,10 @@ jobs:
       #   with:
       #     token: ${{ secrets.GITHUB_TOKEN }}
 
-
   report:
     needs: test
     runs-on: ubuntu-latest
+    steps:
       - name: Cobertura comment
         uses: 5monkeys/cobertura-action@master
         with:
