@@ -43,6 +43,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage-results
+          path: coverage
 
       - name: Cobertura comment
         uses: 5monkeys/cobertura-action@master
