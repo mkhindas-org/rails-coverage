@@ -1,0 +1,76 @@
+name: Quality Control
+
+on: [pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Ruby (2.6)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6.6
+          bundler-cache: true
+
+      - name: Build and test with RSpec
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rspec
+
+      - name: Upload coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-results
+          path: coverage
+
+          # - name: Code Coverage Report
+      #   uses: romeovs/lcov-reporter-action@v0.2.21
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     lcov-file: ./coverage/lcov.info
+
+  report:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download coverage results
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage-results
+          path: coverage
+
+      - name: Simplecov Report
+        uses: aki77/simplecov-report-action@v1.3.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          failedThreshold: 30
+          resultPath: coverage/.last_run.json
+      # - name: Cobertura comment
+      #   uses: 5monkeys/cobertura-action@master
+      #   with:
+      #     path: coverage/coverage.xml
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #     minimum_coverage: 90
+      # - name: Coverage check
+      #   uses: devmasx/coverage-check-action@v1.2.0
+      #   with:
+      #     type: lcov
+      #     result_path: coverage/lcov.info
+      #     min_coverage: 10
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Very good coverage
+      #   uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
+      #   with:
+      #     path: coverage/lcov.info
+      #     min_coverage: 10
+      # exclude: "**/*_observer.dart **/change.dart"
+      # - name: Report code coverage
+      #   uses: zgosalvez/github-actions-report-lcov@v1
+      #   with:
+      #     coverage-files: coverage/lcov.info
+      #     minimum-coverage: 90
+      #     artifact-name: code-coverage-report
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     working-directory: app
