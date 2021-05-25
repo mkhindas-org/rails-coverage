@@ -30,10 +30,6 @@ jobs:
       #   with:
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
       #     lcov-file: ./coverage/lcov.info
-      # - name: Simplecov Report
-      #   uses: aki77/simplecov-report-action@v1
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
 
   report:
     needs: test
@@ -45,27 +41,31 @@ jobs:
           name: coverage-results
           path: coverage
 
+      - name: Simplecov Report
+        uses: aki77/simplecov-report-action@v1.3.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          failedThreshold: 60
+          resultPath: coverage/.last_run.json
       # - name: Cobertura comment
       #   uses: 5monkeys/cobertura-action@master
       #   with:
       #     path: coverage/coverage.xml
       #     repo_token: ${{ secrets.GITHUB_TOKEN }}
       #     minimum_coverage: 90
-
-      - name: Coverage check
-        uses: devmasx/coverage-check-action@v1.2.0
-        with:
-          type: lcov
-          result_path: coverage/lcov.info
-          min_coverage: 10
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Very good coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
-        with:
-          path: coverage/lcov.info
-          min_coverage: 10
-          # exclude: "**/*_observer.dart **/change.dart"
+      # - name: Coverage check
+      #   uses: devmasx/coverage-check-action@v1.2.0
+      #   with:
+      #     type: lcov
+      #     result_path: coverage/lcov.info
+      #     min_coverage: 10
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Very good coverage
+      #   uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
+      #   with:
+      #     path: coverage/lcov.info
+      #     min_coverage: 10
+      # exclude: "**/*_observer.dart **/change.dart"
       # - name: Report code coverage
       #   uses: zgosalvez/github-actions-report-lcov@v1
       #   with:

@@ -31,9 +31,11 @@ group :development, :test do
   # gem 'codecov', require: false
   # gem 'coveralls_reborn', '~> 0.22.0', require: false
   gem 'rewind-ruby-style', require: false, source: 'https://rubygems.org'
-  gem 'simplecov', '~> 0.21'
-  gem 'simplecov-lcov', '~> 0.8'
+  gem 'simplecov'
+  # gem 'simplecov-json', require: false
+  # gem 'simplecov-json'
   # gem 'simplecov-lcov', '~> 0.8'
+  # gem 'simplecov-lcov'
   # gem 'simplecov-cobertura'
 
   gem 'rspec-rails'
