@@ -45,7 +45,7 @@ jobs:
         uses: aki77/simplecov-report-action@v1.3.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          failedThreshold: 60
+          failedThreshold: 30
           resultPath: coverage/.last_run.json
       # - name: Cobertura comment
       #   uses: 5monkeys/cobertura-action@master
